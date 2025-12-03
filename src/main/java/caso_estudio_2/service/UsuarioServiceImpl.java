@@ -28,6 +28,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario guardar(Usuario usuario) {
+
+        // Si la contraseña NO empieza con {noop}, se agrega
+        if (!usuario.getPassword().startsWith("{noop}")) {
+            usuario.setPassword("{noop}" + usuario.getPassword());
+        }
+
         return usuarioRepository.save(usuario);
     }
 
@@ -66,6 +72,5 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<Usuario> ordenarPorFechaCreacion() {
         return usuarioRepository.findAllByOrderByFechaCreacionDesc();
     }
-
     
 }

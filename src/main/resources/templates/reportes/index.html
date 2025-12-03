@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Notas - UFidélitas</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <h3>Reporte Académico - Notas</h3>
+    <hr>
+
+    <!-- Cuadro: Mejor Nota -->
+    <div class="row mb-4 justify-content-center">
+
+        <div class="col-md-6">
+            <div class="card border-success shadow">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Mejor Calificación del Período</h5>
+                    <p class="fs-1 fw-bold text-success" th:text="${mejorNota}"></p>
+                    <p class="fs-5" th:text="${mejorMateria}"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tabla de notas -->
+    <h4 class="mt-4">Notas por Materia</h4>
+
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+        <tr>
+            <th>Materia</th>
+            <th>Nota</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="mat, i : ${materias}">
+            <td th:text="${mat}"></td>
+            <td th:text="${notas[i.index]}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

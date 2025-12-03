@@ -1,6 +1,5 @@
 package caso_estudio_2.controller;
 
-import caso_estudio_2.domain.Usuario;
 import caso_estudio_2.service.UsuarioService;
 import caso_estudio_2.service.RolService;
 

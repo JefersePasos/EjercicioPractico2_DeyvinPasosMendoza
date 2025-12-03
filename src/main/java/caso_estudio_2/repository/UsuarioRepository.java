@@ -23,4 +23,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     // Orden por fecha de creación
     List<Usuario> findAllByOrderByFechaCreacionDesc();
+
+    Usuario findByEmail(String email);
 }
