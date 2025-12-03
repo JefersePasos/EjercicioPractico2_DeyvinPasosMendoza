@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultas Avanzadas</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <h3>Consultas Avanzadas</h3>
+
+    <hr>
+
+    <h5>Búsqueda por Rol</h5>
+    <form action="/consultas/por-rol" method="get" class="row g-3 mb-4">
+        <div class="col-auto">
+            <select name="rolId" class="form-select">
+                <option th:each="r : ${roles}" th:value="${r.id}" th:text="${r.nombre}"></option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+
+    <h5>Búsqueda por nombre o email</h5>
+    <form action="/consultas/buscar" method="get" class="row g-3 mb-4">
+        <div class="col-auto">
+            <input name="texto" class="form-control" placeholder="Nombre o email">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+
+    <h5>Búsqueda por fecha de creación</h5>
+    <form action="/consultas/fechas" method="get" class="row g-3 mb-4">
+        <div class="col-auto">
+            <input type="date" name="inicio" class="form-control">
+        </div>
+        <div class="col-auto">
+            <input type="date" name="fin" class="form-control">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+
+    <h5>Estadísticas</h5>
+    <a href="/consultas/estadisticas" class="btn btn-info mb-4">Ver estadísticas</a>
+
+    <h5>Usuarios ordenados por fecha</h5>
+    <a href="/consultas/ordenados" class="btn btn-secondary">Ver ordenados</a>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
